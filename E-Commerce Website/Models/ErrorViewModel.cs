@@ -22,13 +22,13 @@ using System;
    So what is MVC - MVC is a workflow and design pattern for developing applications.
 
    The controller receives the HTTPS requests, then it interacts with the model to handle the data, and then 
-   it sends it to the view, then the view knows what to display and sends it to the browser.
+   it sends it to the view, then the view knows what to display and sends it back to controller which sends it to the browser.
 
    The workflow of MVC architecture:
 
    Browser sends the request to the server, then the server finds the route specified by the browser URL and sends it via
    route to the controller. The request goes to the specific controller based on the route name (e.g Home/Index). The controller now 
-   communicates with the model to fectch the data, the model sends the data, then the controller sends the data to 
+   communicates with the model to fetch the data, the model sends the data, then the controller sends the data to 
    the specific view assigned to the action ( from the URL e.g. Index). View now populates the model data. Then finally , when the controller has everything it needs, 
    it sends the response to the server and the server to the browser. 
    */

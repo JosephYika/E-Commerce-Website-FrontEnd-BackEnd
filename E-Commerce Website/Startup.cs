@@ -78,6 +78,7 @@ namespace E_Commerce_Website
                     https: //localhost:1337/Company/Customer/1 
                     https: //localhost:1337/Home - Controller is Home, Action is Index, Id is Null 
                     
+               
                     
                */
 
@@ -98,6 +99,35 @@ namespace E_Commerce_Website
 
             // End points : there are different types of end points e.g MVC , Razor Pages, SignalR
             // in UseRouting method , there will be defined which technology we use e.g MVC etc
-        }
+        }   // ends point is one end of a communication channel
+            // in this case our end point is MVC as defined by the pattern
+            // This is called Convention Based Routing - where the route is determined based on 
+            // the rules defined in the route templates ( the route template is the template in the Startup.cs - so this file)
+
+        /*We can also have Dedicated conventional routing , which basicaly means that
+         we create another endpoint and specificy the pattern dedicated to the controller.
+
+
+         e.g 
+
+           endpoints.MapControllerRoute{
+           name: "blog",
+           pattern: "blog/{article}",
+           defaults: new {controller = "blog", action = "Article" });
+
+           In the example above we see a convential routing dedicated to controller blog 
+
+          so in this case when we navigate to /Blog, /Blog/Article , /Blog/Article/whatever string 
+          this will display the same content of the action method 
+
+          We can also have Attribute Based Routing which means that the routing can be done 
+          by setting up attributes at controller level or at action level
+          See attribute based routing in the Controllers/AppointmentController.cs
+         */
+
+
+
+
+
     }
 }
