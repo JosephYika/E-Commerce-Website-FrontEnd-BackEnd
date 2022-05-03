@@ -31,7 +31,18 @@ using System;
    communicates with the model to fetch the data, the model sends the data, then the controller sends the data to 
    the specific view assigned to the action ( from the URL e.g. Index). View now populates the model data. Then finally , when the controller has everything it needs, 
    it sends the response to the server and the server to the browser. 
-   */
+   
+ 
+    Model represents the shape of the data. 
+    Each property of the model represent the column in a database 
+    so if we have got 3 properties .e.g. -id, name, lastname, there will be three columns 
+    It maintains the data of the application
+    Model classes rside in the model folder in mvc architecture
+
+    This ErrorViewModel class is not the model data - we need to create a separate class inside the model folder
+    I just wrote my notes here , because there was a lot of space
+ 
+ */
 
 namespace E_Commerce_Website.Models
 {
