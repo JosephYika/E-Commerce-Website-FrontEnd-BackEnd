@@ -20,5 +20,8 @@ namespace E_Commerce_Website.Data
 
         /* Creating Items table */
         public DbSet<Item> Items { get; set; }
+
+
+
     }
 }
