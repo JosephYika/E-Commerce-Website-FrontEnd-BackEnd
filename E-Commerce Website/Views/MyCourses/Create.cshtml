@@ -1,0 +1,78 @@
+﻿<!-- Since we are in the same Item folder we have to reference it-->
+@model E_Commerce_Website.Models.MyCourses
+<!--This form is linked to the post Create action in the ItemController. This is because when the user clicks create on the page
+    I want all of the information that he entered in the table that is created within this form to populate the tables in the database
+    So whatever the user types will be first send to the post Create method , which will be the first step to populate the columns.-->
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <!--Display error message that is linked to each column below in the
+            span asp-validation-for -->
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3 ">Add Courses</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <!--instead of hard coding the names for the form , we can use it directly from the model like shown below-->
+                        <!--aps-for allows to use the properties(column) names from the item model - Models/Item.cs-->
+                        <label asp-for="CourseTitle"></label>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="CourseAuthor"></label>
+
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Price"></label>
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <!--Specifying that whatever the input will be it will be associated with the appropriate columns e.g.
+                            if a user types something in the BookTitle input this will add whatever the input was to the BookTitle column
+                            in the database-->
+                        <input asp-for="CourseTitle" class="form-control" />
+                        <!--adding validation for the CourseTitle Column-->
+                        <span asp-validation-for="CourseTitle" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <input asp-for="CourseAuthor" class="form-control" />
+                        <span asp-validation-for="CourseAuthor" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <!--Creating a button that displays CREATE-->
+                            <input type="submit" class="btn btn-outline-primary w-100" value="create" />
+                        </div>
+                        <div class="col">
+                            <!--A button that send back to Item/Index page - so the page with My Books-->
+                            <a asp-controller="MyCourses" asp-action="Index" class="btn btn-outline-primary w-100">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+
+<!--Client side validation. Here I am using javascript. The validation name must be the same
+    as in the Shared folder. 
+    This validation will not be hitting the server side , but it will be on the client side
+    so for example this allows for a real time error messages 
+    messages will be displayed as soon as the user starts typing incorrect things in the text box. -->
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+}

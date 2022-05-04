@@ -23,7 +23,8 @@ namespace E_Commerce_Website.Data
          this was of course not created by me , but automatically installed after installing the EF Core */
         public DbSet<Item> Items { get; set; }
 
-
-
+        // creating courses table
+        public DbSet<MyCourses> Courses { get; set; }
+        public IEnumerable<MyCourses> MyCourses { get; internal set; }
     }
 }
