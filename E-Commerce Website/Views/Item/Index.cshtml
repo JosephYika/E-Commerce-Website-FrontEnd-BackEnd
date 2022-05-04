@@ -1,7 +1,63 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿<!--Retriving the data sent from the controller-->
+<!--So basically I am saying here that I am fetching the model data of type Item
+    so this will recognize all of the Item data type -->
+@model IEnumerable<E_Commerce_Website.Models.Item>
 
-<h1>Available Items</h1>
+<!--Here I am using boostrap library with the HTML to create a nice page-->
 
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">My Books</h2>
+            <p>The list of books I bought associated with the courses I bought</p>
+        </div>
+        <div class="col-6 text-right">
+            <!--Specifying where the user will be redirected after clicking on Create new Item button-->
+            <a asp-controller="Item" asp-action="Create" class="btn btn-outline-primary">Create new Item</a>
+        </div>
+
+    </div>
+
+    <!--This gives me details how many items there are in the model-->
+   
+    @if(Model.Count() > 0){ 
+        
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Book Title
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Associated Course
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--During each iteration variable item will hold a value of an element from Model.
+                    This table for now has only one row except the header row.
+                    Each cell within this row will be populated with data from the database-->
+                @foreach(var item in Model)
+                {
+                <tr>
+                    <td width="30%">@item.BookTitle</td>
+                    <td width="30%">@item.Author</td>
+                    <td width="30%">@item.AssociatedCourse</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <!--If there are no items in the model (so in the database)-->
+        <p>No items Created yet</p>
+    }
+
+
+
+
+</div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations; // add data annotations to specifiy keys
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,18 +50,14 @@ namespace E_Commerce_Website.Models
          --> lunch Package Manager Console and run migration commands
          */
         [Key]
-        public int Id;
+        public int Id { get; set; }
 
-        // defining getters and setters 
-        public int getId()
-        {
-            return this.Id;
-        }
-        public void setId(int id)
-        {
-            this.Id = id;
-        }
+        [DisplayName("Associated Course")] // using data annotaions so that the name will be displayed Associated Course instead of AssociatedCourse 
+        public string AssociatedCourse { get; set; } // shorter version of getters and setters
+                                                     // Make sure to add System componentn model on the top 
+        public string Author { get; set; }
 
-         public string Borrower { get; set; } // shorter version of getters and setters
+        [DisplayName("Book Title")]
+        public string BookTitle { get; set; }
     }
 }

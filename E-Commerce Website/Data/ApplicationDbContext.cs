@@ -18,7 +18,9 @@ namespace E_Commerce_Website.Data
 
         }
 
-        /* Creating Items table */
+        /* Creating Items table. Here We are using Abstrac class DbSet which is available to us 
+         * from the EF Core , click : Ctr + mouse click on DbSet to see where it was originally created, 
+         this was of course not created by me , but automatically installed after installing the EF Core */
         public DbSet<Item> Items { get; set; }
 
 
