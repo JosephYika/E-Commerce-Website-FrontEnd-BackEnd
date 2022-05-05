@@ -46,6 +46,15 @@
                     <td width="30%">@MyCourses.CourseTitle</td>
                     <td width="30%">@MyCourses.CourseAuthor</td>
                     <td width="30%">@MyCourses.Price</td>
+                    <td width="30%">
+                        <div class="w-100 btn-group" role="group">
+                            <!--Specifying where the user will be redirected to Update or Delete page after clicking on Update/Delete. Here I am also specifying that
+                                the Update and Delete are linked to the primary Key from the MyCourses controller. This is because these buttons must be linked
+                                to each row, so that they know what to delete. Primary key identifies uniquely each row, so we can use it here.-->
+                            <a asp-controller="MyCourses" asp-action="Update" asp-route-Id="@MyCourses.Id" class="btn btn-info mx-1">Update</a>
+                            <a asp-controller="MyCourses" asp-action="Delete" asp-route-Id="@MyCourses.Id" class="btn btn-danger mx-1">Delete</a>
+                        </div>
+                    </td>
                 </tr>
                 }
             </tbody>

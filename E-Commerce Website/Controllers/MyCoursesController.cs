@@ -63,6 +63,84 @@ namespace E_Commerce_Website.Controllers
            
         }
 
+
+        /*Post DeletePost. This action is called when the user clicks on Remove button on the Delete Page - MyCourses/Delete.cshtml*/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var obj = _db.Courses.Find(id); // find id , which is primary key and assign it to variable obj
+            if(obj == null) // check object is null
+            {
+                return NotFound(); // if it is then return not found message
+            }
+
+            // if id is not null 
+            _db.Courses.Remove(obj);  // remove it , so remove one row
+            _db.SaveChanges(); // save changes 
+            return RedirectToAction("Index");// redirect to index action
+        }
+
+
+        //Post Update
+        // this action is called when the user clicks delete on MyCourses page  - so where is the list of all added courses. After clicking delete
+        // the user should be redirected to Delete page 
+
+        public IActionResult Delete(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Courses.Find(id);
+
+            if(obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+
+
+        // Get Update 
+        
+
+        public IActionResult Update(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Courses.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        // Post Update
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult Update (MyCourses obj)
+        {
+            if(ModelState.IsValid)
+            {
+                _db.Courses.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+        
+
     }
 }
 

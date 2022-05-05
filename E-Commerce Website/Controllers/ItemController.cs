@@ -59,5 +59,8 @@ namespace E_Commerce_Website.Controllers
             return RedirectToAction("Index"); // this will display the Index page with the updated table 
         }
 
+
+        
+
     }
 }

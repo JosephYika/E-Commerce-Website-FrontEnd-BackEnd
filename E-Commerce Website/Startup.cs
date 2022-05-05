@@ -69,7 +69,9 @@ namespace E_Commerce_Website
             // the request is passed from one middleware to another until the end point, then it returns the response
 
             // middlewares down below:  
+
             app.UseHttpsRedirection();
+
             app.UseStaticFiles(); // wwwroot file is made available by this middleware, this middleware uses the wwwroot files
                                   // in the wwwroot i can add images files for my website  
             app.UseRouting(); 
