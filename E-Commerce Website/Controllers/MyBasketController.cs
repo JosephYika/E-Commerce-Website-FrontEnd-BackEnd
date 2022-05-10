@@ -19,9 +19,40 @@ namespace E_Commerce_Website.Controllers
 
         public IActionResult Index()
         {
+            /* Retrieve Items from the database */
+            IEnumerable<BasketItem> objList = _db.BasketItems;
+            return View(objList);
             
-            return View();
         }
-       
+
+
+
+        public IActionResult Add(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Items.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            var newItem = new BasketItem()
+            {
+                
+                AssociatedCourse = obj.AssociatedCourse,
+                Author = obj.Author,
+                BookTitle = obj.BookTitle
+            };
+
+            _db.BasketItems.Add(newItem); 
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        
     }
 }

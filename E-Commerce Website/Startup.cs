@@ -1,3 +1,4 @@
+// ORIGINAL
 using E_Commerce_Website.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,8 @@ namespace E_Commerce_Website
             );
                 
             services.AddControllersWithViews();
+
+            
             
         }
 
@@ -42,6 +45,14 @@ namespace E_Commerce_Website
         // checks whether we are in development environment or in production environemtn for example
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            using var scope = app.ApplicationServices.CreateScope();
+            var DbContext = scope.ServiceProvider.GetService<ApplicationDbContext>();
+
+            
+            //DbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE Cu");
+            DbContext.Database.ExecuteSqlRaw("TRUNCATE TABLE BasketItems");
+
             if (env.IsDevelopment())  // If we are in the developent env than ...
             {
                 app.UseDeveloperExceptionPage(); // use this 

@@ -82,9 +82,7 @@ namespace E_Commerce_Website.Controllers
         }
 
 
-        //Post Update
-        // this action is called when the user clicks delete on MyCourses page  - so where is the list of all added courses. After clicking delete
-        // the user should be redirected to Delete page 
+        
 
         public IActionResult Delete(int? id)
         {

@@ -25,6 +25,10 @@ namespace E_Commerce_Website.Data
 
         // creating courses table
         public DbSet<MyCourses> Courses { get; set; }
-        public IEnumerable<MyCourses> MyCourses { get; internal set; }
+       // public IEnumerable<MyCourses> MyCourses { get; internal set; }
+
+
+        
+        public DbSet<BasketItem> BasketItems { get; set; }
     }
 }
